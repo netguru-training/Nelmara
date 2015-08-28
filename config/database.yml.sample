@@ -1,0 +1,13 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  host:     localhost
+  pool: 5
+
+development:
+  <<: *connection
+  database: nelmara_development
+
+test: &test
+  <<: *connection
+  database: nelmara_test
