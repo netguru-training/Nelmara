@@ -7,5 +7,8 @@ class Post < ActiveRecord::Base
   validates_presence_of :title
   validates :body, presence: true, length: 2..300
 
+  def total_votes
+    votes_for.up.size - votes_for.down.size
+  end
 end
 
