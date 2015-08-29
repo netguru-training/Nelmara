@@ -3,3 +3,12 @@
   %div
     %p= post.title
     %p= post.body
+    %p
+      Add a comment
+      - render 'comments/form'
+      %table
+        - if comments.any?
+          - post.comments.each do |comment|
+            - render 'comments/comment'
+
+

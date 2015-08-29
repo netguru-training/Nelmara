@@ -1,0 +1,5 @@
+%tr
+  %td= comment.body
+  %td= comment.created_at
+  %td
+    = link_to post_comment_path(comment), {method :delete}

@@ -1,0 +1,21 @@
+connection: &connection
+  adapter: postgresql
+  encoding: unicode
+  host:     localhost
+  pool: 5
+
+
+development:
+  <<: *connection
+  database: nelmara_development
+  username: <%= ENV['APP_POSTGRES_USER'] %>
+  password: <%= ENV['APP_POSTGRES_PASSWORD'] %>
+
+test: &test
+  <<: *connection
+  database: nelmara_test
+  username: <%= ENV['APP_POSTGRES_USER'] %>
+  password: <%= ENV['APP_POSTGRES_PASSWORD'] %>
+
+production:
+  url: <%= ENV['DATABASE_URL'] %>
