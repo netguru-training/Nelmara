@@ -28,6 +28,9 @@ group :development, :test do
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
 end
+group :development do
+  gem 'erb2haml', '~> 0.1.5'
+end
 
 group :production do
   gem 'puma'
@@ -41,3 +44,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
+
