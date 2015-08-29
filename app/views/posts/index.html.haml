@@ -1,5 +1,5 @@
-= link_to "Submit new post", new_post_path
+= link_to "Submit new post", new_post_path, class: "btn btn-primary btn-submit"
 - posts.each do |post|
-  %div
-    %p= post.title
-    %p= post.body
+  .post
+    .title= post.title
+    .body= post.body
