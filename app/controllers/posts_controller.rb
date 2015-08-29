@@ -19,10 +19,12 @@ class PostsController < ApplicationController
 
   def upvote
     post.liked_by current_user
+    redirect_to post
   end
 
   def downvote
     post.disliked_by current_user
+    redirect_to post
   end
   
   private
