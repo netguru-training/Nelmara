@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate_user!, except: [:index]
+
   def index
     @posts = Post.all
   end
@@ -7,7 +9,7 @@ class PostsController < ApplicationController
     @post = Post.new
   end
 
-  def create 
+  def create
     post = Post.new(post_params)
     post.save
     redirect_to root_path
@@ -18,3 +20,4 @@ class PostsController < ApplicationController
       params.require(:post).permit(:title, :body, :url)
     end
 end
+
