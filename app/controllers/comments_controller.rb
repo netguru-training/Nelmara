@@ -4,6 +4,7 @@ class CommentsController < ApplicationController
   expose(:comment, attributes: :comment_params)
 
   def create
+    comment.user = current_user
     if comment.save
       redirect_to params[:comment][:redirect] || post, notice: 'Comment was successfully created.'
     else
@@ -27,7 +28,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comment }
       format.json { render json: { id: comment.id, votes: comment.total_votes } }
-    end    
+    end
   end
 
   def downvote
@@ -37,7 +38,7 @@ class CommentsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to comment }
       format.json { render json: { id: comment.id, votes: comment.total_votes } }
-    end   
+    end
   end
 
   private
