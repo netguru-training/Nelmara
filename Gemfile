@@ -25,7 +25,6 @@ gem 'sdoc', '~> 0.4.0', group: :doc
 gem 'omniauth'
 gem 'omniauth-facebook'
 gem 'figaro'
-gem "fog-aws"
 gem 'carrierwave'
 gem 'mini_magick'
 gem 'social-share-button'
