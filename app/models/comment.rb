@@ -6,5 +6,8 @@ class Comment < ActiveRecord::Base
 
   acts_as_votable
 
+  def total_votes
+    votes_for.up.size - votes_for.down.size
+  end
 end
 
