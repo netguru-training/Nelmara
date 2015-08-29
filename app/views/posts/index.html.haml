@@ -8,4 +8,4 @@
     %table
       - if post.comments.any?
         - post.comments.each do |comment|
-          = render 'comments/comment'
+          = render comment
