@@ -5,8 +5,17 @@ class PostsController < ApplicationController
   expose(:post, attributes: :post_params)
 
   def create
+    post.user = current_user
     post.save
     redirect_to root_path
+  end
+
+  def update
+    if post.save
+      redirect_to post_path(post)
+    else
+      render :edit
+    end
   end
 
   private
