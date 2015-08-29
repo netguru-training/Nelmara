@@ -25,6 +25,7 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'carrierwave'
 gem 'mini_magick'
+gem 'social-share-button'
 
 group :development, :test do
   gem 'byebug'
