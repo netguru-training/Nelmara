@@ -24,7 +24,7 @@ class PostsController < ApplicationController
   def downvote
     post.disliked_by current_user
   end
-
+  
   private
     def post_params
       params.require(:post).permit(:title, :body, :url)
