@@ -8,8 +8,6 @@
     = csrf_meta_tags
   %body
     .navbar.navbar-default
-      .container
-        .navbar-header
-          = link_to "Nelmara", root_path, class: "navbar-brand"
+      = render 'layouts/navigation'
     .container
       = yield
