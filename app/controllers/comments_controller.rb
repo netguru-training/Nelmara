@@ -1,7 +1,7 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  expose(:post) { comment.post }
-  expose(:comments)
+  expose(:post)
+  expose(:comments, ancestor: :post)
   expose(:comment, attributes: :comment_params)
 
   # POST /comments
@@ -9,7 +9,7 @@ class CommentsController < ApplicationController
   def create
     respond_to do |format|
       if comment.save
-        format.html { redirect_to [comment, post], notice: 'Comment was successfully created.' }
+        format.html { redirect_to post, notice: 'Comment was successfully created.' }
         format.json { render :show, status: :created, location: @comment }
       else
         format.html { render :new }
