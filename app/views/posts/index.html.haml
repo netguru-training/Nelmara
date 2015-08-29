@@ -1,9 +1,4 @@
 = link_to "Submit new post", new_post_path, class: "btn btn-primary btn-submit"
 
 - posts.each do |post|
-  .post
-    .title= link_to post.title, post
-    .body= post.body
-    .user= post.user
-    .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if user_signed_in? && (current_user.id == post.user_id)
-
+  = render post
