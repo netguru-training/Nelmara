@@ -25,7 +25,7 @@ class CommentsController < ApplicationController
       comment.liked_by current_user
     end
     respond_to do |format|
-      format.html { redirect_to comment }
+      format.html { redirect_to comment.post }
       format.json { render json: { id: comment.id, votes: comment.decorate.total_votes } }
     end    
   end
@@ -35,7 +35,7 @@ class CommentsController < ApplicationController
       comment.disliked_by current_user
     end
     respond_to do |format|
-      format.html { redirect_to comment }
+      format.html { redirect_to comment.post }
       format.json { render json: { id: comment.id, votes: comment.decorate.total_votes } }
     end   
   end
