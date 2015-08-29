@@ -15,6 +15,7 @@ gem 'devise'
 gem "haml-rails", "~> 0.9"
 gem 'decent_exposure'
 gem 'decent_decoration'
+gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
