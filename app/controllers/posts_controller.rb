@@ -1,6 +1,5 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index]
-
+  before_action :authenticate_user!, except: [:index, :show]
   expose(:posts)
   expose(:post, attributes: :post_params)
 
@@ -18,9 +17,16 @@ class PostsController < ApplicationController
     end
   end
 
+  def upvote
+    post.liked_by current_user
+  end
+
+  def downvote
+    post.disliked_by current_user
+  end
+
   private
     def post_params
       params.require(:post).permit(:title, :body, :url)
     end
 end
-
