@@ -1,5 +1,5 @@
-%a{:href => "/posts/new"} Submit new post
-- @posts.each do |post|
+= link_to "Submit new post", new_post_path
+- posts.each do |post|
   %div
     %p= post.title
     %p= post.body

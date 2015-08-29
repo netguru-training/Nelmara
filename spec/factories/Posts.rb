@@ -1,5 +1,5 @@
 FactoryGirl.define do
-  factory :submission do
+  factory :post do
     title "MyString"
 url "MyString"
 body "MyText"

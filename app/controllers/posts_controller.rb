@@ -1,14 +1,8 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.all
-  end
-
-  def new
-    @post = Post.new
-  end
+  expose(:posts)
+  expose(:post, attributes: :post_params)
 
   def create 
-    post = Post.new(post_params)
     post.save
     redirect_to root_path
   end
