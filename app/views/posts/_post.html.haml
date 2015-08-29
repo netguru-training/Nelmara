@@ -1,7 +1,7 @@
 %table.post
   %td.votes
     .upvote= link_to "+", post_upvote_path(post)
-    .vote-count= post.votes_for.up.size - post.votes_for.down.size
+    .vote-count= post.total_votes
     .downvote= link_to "-", post_downvote_path(post)
   %td.content
     .title= link_to post.title, post
