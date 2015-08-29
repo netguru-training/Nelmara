@@ -1,0 +1,23 @@
+// Place all the styles related to the submissions controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.btn-submit {
+  margin-bottom: 10px !important;
+}
+
+.post {
+  border: 1px #eee solid;
+  margin-bottom: 10px;
+
+  .title {
+    padding: 5px;
+    border-bottom: 1px #eee solid;
+    font-weight: bold;
+    background-color: #E5E5E5;
+  }
+
+  .body {
+    padding: 5px;
+  }
+}

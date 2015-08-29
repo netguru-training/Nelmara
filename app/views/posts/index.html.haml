@@ -1,15 +1,9 @@
-= link_to "Submit new post", new_post_path
+= link_to "Submit new post", new_post_path, class: "btn btn-primary btn-submit"
 
-%table.table
-  %tr
-    %th= "Title"
-    %th= "Body"
-    %th= "User"
-    %th
-  - posts.each do |post|
-    %tr
-      %th= post.title
-      %th= post.body
-      %th= post.user
-      %th= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if user_signed_in? && (current_user.id == post.user_id)
+- posts.each do |post|
+  .post
+    .title= link_to post.title, post
+    .body= post.body
+    .user= post.user
+    .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if user_signed_in? && (current_user.id == post.user_id)
 
