@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :show]
   expose(:posts)
   expose(:post, attributes: :post_params)
+  expose(:comment) { Comment.new }
 
   def create
     post.user = current_user
