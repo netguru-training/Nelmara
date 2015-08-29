@@ -30,6 +30,7 @@ group :development, :test do
 end
 group :development do
   gem 'erb2haml', '~> 0.1.5'
+  gem 'xray-rails', '~> 0.1.16'
 end
 
 group :production do
