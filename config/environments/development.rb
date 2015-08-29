@@ -39,7 +39,6 @@ Rails.application.configure do
   # Raises error for missing translations
   # config.action_view.raise_on_missing_translations = true
 
-...
   # General Settings for facebook omniauth
   config.app_domain = 'localhost.com'
 
@@ -59,3 +58,4 @@ Rails.application.configure do
 
 
 end
+
