@@ -19,7 +19,9 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    post.liked_by current_user
+    if post.user != current_user
+      post.liked_by current_user
+    end
     respond_to do |format|
       format.html { redirect_to post }
       format.json { render json: { id: post.id, votes: post.total_votes } }
@@ -27,7 +29,9 @@ class PostsController < ApplicationController
   end
 
   def downvote
-    post.disliked_by current_user
+    if post.user != current_user
+      post.disliked_by current_user
+    end
     respond_to do |format|
       format.html { redirect_to post }
       format.json { render json: { id: post.id, votes: post.total_votes } }
