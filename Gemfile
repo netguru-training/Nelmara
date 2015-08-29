@@ -15,6 +15,7 @@ gem 'devise'
 gem "haml-rails", "~> 0.9"
 gem 'decent_exposure'
 gem 'decent_decoration'
+gem 'acts_as_votable', '~> 0.10.0'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
@@ -26,6 +27,9 @@ group :development, :test do
   gem 'spring'
   gem 'rspec-rails'
   gem 'web-console', '~> 2.0'
+end
+group :development do
+  gem 'erb2haml', '~> 0.1.5'
 end
 
 group :production do
@@ -40,3 +44,4 @@ group :test do
   gem 'selenium-webdriver'
   gem 'shoulda-matchers'
 end
+
