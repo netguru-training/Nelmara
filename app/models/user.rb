@@ -7,11 +7,11 @@ class User < ActiveRecord::Base
   has_many :posts
   has_many :comments
 
-  validates_presence_of :username
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
-
   TEMP_EMAIL_PREFIX = 'you@example.com'
   TEMP_EMAIL_REGEX = /\Ayou@example.com/
+
+  validates_presence_of :username
+  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
 
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
@@ -60,6 +60,3 @@ class User < ActiveRecord::Base
     self.email && self.email !~ TEMP_EMAIL_REGEX
   end
 end
-
-end
-
