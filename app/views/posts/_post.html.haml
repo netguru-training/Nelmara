@@ -14,4 +14,5 @@
     .tags
       - post.tag_list.each do |tag|
         = link_to display_tag(tag), tag_path(tag)
+    .social= social_share_button_tag(post.title)
     .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if can_edit?(post)
