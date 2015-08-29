@@ -8,6 +8,8 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   attr_accessor :tags
 
+  mount_uploader :image, ImageUploader
+
   validates_presence_of :title
   validates :body, presence: true, length: 2..300
 
