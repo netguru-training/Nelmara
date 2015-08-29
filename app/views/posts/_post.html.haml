@@ -7,5 +7,6 @@
     .title= link_to post.title, post
     .body= post.body
     .user= "Posted by #{post.user.username}"
+    .tags= post.tag_list.join(" ")
     .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if can_edit?(post)
 
