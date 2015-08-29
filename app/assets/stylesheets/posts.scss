@@ -2,23 +2,34 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+$border: 1px #eee solid;
+
 .btn-submit {
   margin-bottom: 10px !important;
 }
 
 .post {
-  border: 1px #eee solid;
+  border: $border;
   margin-bottom: 10px;
+  width: 100%;
 
-  .title {
-    padding: 5px;
-    border-bottom: 1px #eee solid;
-    font-weight: bold;
-    background-color: #E5E5E5;
+  .votes {
+    padding: 0 10px;
+    width: 30px;
+    border-right: $border;
   }
+  
+  .content {
+    .title {
+      padding: 5px;
+      border-bottom: $border;
+      font-weight: bold;
+      background-color: #E5E5E5;
+    }
 
-  .body, .user {
-    padding: 5px;
+    .body, .user {
+      padding: 5px;
+    }
   }
 }
 
