@@ -13,15 +13,13 @@ class Post < ActiveRecord::Base
   acts_as_taggable
   attr_accessor :tags
 
-  validates_presence_of :title
+  mount_uploader :image, ImageUploader
+
+  validates :title, presence: true
   validates :body, presence: true, length: 2..300
 
   def self.search_by_title(query)
     kinda_matching(query)
-  end
-
-  def total_votes
-    votes_for.up.size - votes_for.down.size
   end
 
 end

@@ -34,7 +34,7 @@ class PostsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: { id: post.id, votes: post.total_votes } }
+      format.json { render json: { id: post.id, votes: post.decorate.total_votes } }
     end
   end
 
@@ -44,14 +44,14 @@ class PostsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: { id: post.id, votes: post.total_votes } }
+      format.json { render json: { id: post.id, votes: post.decorate.total_votes } }
     end
   end
 
   private
 
     def post_params
-      params.require(:post).permit(:title, :body, :url, :tags)
+      params.require(:post).permit(:title, :body, :url, :tags, :image)
     end
 
 end

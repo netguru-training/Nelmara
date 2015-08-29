@@ -1,6 +1,6 @@
 %tr.comment{ id: "comment_#{comment.id}" }
   %td.vote= link_to "+", post_comment_upvote_path(comment.post, comment), remote: true, data: { type: :json }, class: "comment-link"
-  %td.vote-count= comment.total_votes
+  %td.vote-count= comment.decorate.total_votes
   %td.vote= link_to "-", post_comment_downvote_path(comment.post, comment), remote: true, data: { type: :json }, class: "comment-link"
   %td= comment.body
   %td= comment.created_at
