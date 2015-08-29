@@ -1,4 +1,4 @@
-Nelmara
+Nelmara [![Build Status](https://travis-ci.org/netguru-training/nelmara.svg?branch=master)](https://travis-ci.org/netguru-training/nelmara)
 ================
 ## REQUIREMENTS
 
