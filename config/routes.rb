@@ -4,6 +4,7 @@ Rails.application.routes.draw do
 
   resources :posts do
     resources :comments
+    get :upvote, :downvote
   end
 
   devise_for :users
