@@ -20,6 +20,10 @@ gem 'acts-as-taggable-on', '~> 3.4'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'omniauth'
+gem 'omniauth-facebook'
+gem 'figaro'
+
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
