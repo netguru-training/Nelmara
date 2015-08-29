@@ -1,2 +1,4 @@
 en:
-  hello: "Hello world"
+  comment:
+    destroy_msg: ! 'This comment was deleted by %{user}'
+
