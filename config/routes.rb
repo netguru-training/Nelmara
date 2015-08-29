@@ -1,11 +1,11 @@
 Rails.application.routes.draw do
-
   root 'posts#index'
 
   resources :posts do
     resources :comments, shallow: true
     get :upvote, :downvote
   end
+  resources :tags, only: :show, param: :tag
 
   devise_for :users
   # The priority is based upon order of creation: first created -> highest priority.
