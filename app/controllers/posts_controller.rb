@@ -20,12 +20,18 @@ class PostsController < ApplicationController
 
   def upvote
     post.liked_by current_user
-    redirect_to post
+    respond_to do |format|
+      format.html { redirect_to post }
+      format.json { render json: post.total_votes }
+    end    
   end
 
   def downvote
     post.disliked_by current_user
-    redirect_to post
+    respond_to do |format|
+      format.html { redirect_to post }
+      format.json { render json: post.total_votes }
+    end   
   end
   
   private
