@@ -5,7 +5,7 @@
         = link_to post.image.url do 
           = image_tag post.image.thumb.url 
     .upvote= link_to "+", post_upvote_path(post), remote: true, data: { type: :json }, class: "post-link"
-    .vote-count= post.total_votes
+    .vote-count= post.decorate.total_votes
     .downvote= link_to "-", post_downvote_path(post), remote: true, data: { type: :json }, class: "post-link"
   %td.content
     .title= link_to post.title, post

@@ -25,7 +25,7 @@ class PostsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: { id: post.id, votes: post.total_votes } }
+      format.json { render json: { id: post.id, votes: post.decorate.total_votes } }
     end    
   end
 
@@ -35,7 +35,7 @@ class PostsController < ApplicationController
     end
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: { id: post.id, votes: post.total_votes } }
+      format.json { render json: { id: post.id, votes: post.decorate.total_votes } }
     end   
   end
   
