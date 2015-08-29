@@ -4,5 +4,7 @@ class Comment < ActiveRecord::Base
 
   validates :body, presence: true, length: 2..140
 
+  acts_as_votable
+
 end
 

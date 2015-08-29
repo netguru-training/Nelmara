@@ -6,6 +6,7 @@ class PostsController < ApplicationController
 
   def create
     post.user = current_user
+    post.tag_list.add(post.tags.split(" "))
     post.save
     redirect_to root_path
   end
@@ -19,7 +20,9 @@ class PostsController < ApplicationController
   end
 
   def upvote
-    post.liked_by current_user
+    if post.user != current_user
+      post.liked_by current_user
+    end
     respond_to do |format|
       format.html { redirect_to post }
       format.json { render json: { id: post.id, votes: post.total_votes } }
@@ -27,7 +30,9 @@ class PostsController < ApplicationController
   end
 
   def downvote
-    post.disliked_by current_user
+    if post.user != current_user
+      post.disliked_by current_user
+    end
     respond_to do |format|
       format.html { redirect_to post }
       format.json { render json: { id: post.id, votes: post.total_votes } }
@@ -36,6 +41,6 @@ class PostsController < ApplicationController
   
   private
     def post_params
-      params.require(:post).permit(:title, :body, :url)
+      params.require(:post).permit(:title, :body, :url, :tags)
     end
 end

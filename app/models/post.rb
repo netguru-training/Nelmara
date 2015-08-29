@@ -5,6 +5,8 @@ class Post < ActiveRecord::Base
   default_scope { order(created_at: :desc) }
 
   acts_as_votable
+  acts_as_taggable
+  attr_accessor :tags
 
   validates_presence_of :title
   validates :body, presence: true, length: 2..300
