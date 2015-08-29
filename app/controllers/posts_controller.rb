@@ -22,7 +22,7 @@ class PostsController < ApplicationController
     post.liked_by current_user
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: post.total_votes }
+      format.json { render json: { id: post.id, votes: post.total_votes } }
     end    
   end
 
@@ -30,7 +30,7 @@ class PostsController < ApplicationController
     post.disliked_by current_user
     respond_to do |format|
       format.html { redirect_to post }
-      format.json { render json: post.total_votes }
+      format.json { render json: { id: post.id, votes: post.total_votes } }
     end   
   end
   

@@ -1,8 +1,8 @@
-%table.post
+%table.post{id: "post_#{post.id}"}
   %td.votes
-    .upvote= link_to "+", post_upvote_path(post)
+    .upvote= link_to "+", post_upvote_path(post), remote: true, data: { type: :json }
     .vote-count= post.total_votes
-    .downvote= link_to "-", post_downvote_path(post)
+    .downvote= link_to "-", post_downvote_path(post), remote: true, data: { type: :json }
   %td.content
     .title= link_to post.title, post
     .body= post.body
