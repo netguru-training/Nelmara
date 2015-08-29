@@ -2,10 +2,10 @@
 
 - posts.each do |post|
   = render post
-    %p
-      Add a comment
-      - render 'comments/form'
-      %table
-        - if comments.any?
-          - post.comments.each do |comment|
-            - render 'comments/comment'
+  %p
+    Add a comment
+    = render 'comments/form', post: post
+    %table
+      - if post.comments.any?
+        - post.comments.each do |comment|
+          = render 'comments/comment'
