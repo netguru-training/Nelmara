@@ -8,5 +8,6 @@
 
   .field
     = f.input :body
+    = f.hidden_field :redirect, value: request.url
   .actions
     = f.submit 'Save'

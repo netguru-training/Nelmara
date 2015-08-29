@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
   def create
     if comment.save
-      redirect_to post, notice: 'Comment was successfully created.'
+      redirect_to params[:comment][:redirect] || post, notice: 'Comment was successfully created.'
     else
       render :new
     end
@@ -21,7 +21,6 @@ class CommentsController < ApplicationController
   end
 
   private
-
     def comment_params
       params.require(:comment).permit(:body, :post_id)
     end
