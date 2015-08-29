@@ -4,5 +4,5 @@
   %td.vote= link_to "-", post_comment_downvote_path(comment.post, comment), remote: true, data: { type: :json }, class: "comment-link"
   %td= comment.body
   %td= comment.created_at
-  %td= link_to "Delete comment", post_comment_path(comment.post, comment), method: :delete if can_delete?(comment)
+  %td= link_to "Delete comment", post_comment_path(comment.post, comment), method: :delete if is_author?(comment)
 
