@@ -1,4 +1,4 @@
-= form_for comment do |f|
+= simple_form_for [post, comment] do |f|
   - if comment.errors.any?
     #error_explanation
       %h2= "#{pluralize(@comment.errors.count, "error")} prohibited this comment from being saved:"
@@ -7,10 +7,6 @@
           %li= msg
 
   .field
-    = f.label :body
-    = f.text_area :body
-  .field
-    = f.label :post_id
-    = f.number_field :post_id
+    = f.input :body
   .actions
     = f.submit 'Save'
