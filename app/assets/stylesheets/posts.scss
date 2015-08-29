@@ -9,6 +9,23 @@ $border: 1px #eee solid;
   margin-bottom: 10px !important;
 }
 
+#search_controls {
+  width: 100%;
+  margin-bottom: 10px;
+
+  .form-group {
+    width: 100%;
+  }
+}
+
+#search_field {
+  width: 88%;
+}
+
+#search_submit {
+  width: 11%;
+}
+
 .post {
   border: $border;
   margin-bottom: 10px;
@@ -19,7 +36,7 @@ $border: 1px #eee solid;
     width: 30px;
     border-right: $border;
   }
-  
+
   .content {
     .title {
       padding: 5px;
