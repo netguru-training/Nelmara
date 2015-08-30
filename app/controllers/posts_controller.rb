@@ -5,11 +5,14 @@ class PostsController < ApplicationController
   expose(:comment) { Comment.new }
 
   def index
+    if user_signed_in?
+      self.posts = Post.tagged_with(current_user.tags)
+    end
     query_param = params[:query]
     if query_param && query_param != ""
-      self.posts = Post.search_by_title(query_param).order(created_at: :desc)
+      self.posts = posts.search_by_title(query_param).order(created_at: :desc)
     else
-      self.posts = Post.all
+      self.posts = posts.all
     end
     self.posts = posts.paginate(page: params[:page])
     respond_to do |format|

@@ -7,7 +7,11 @@ Rails.application.routes.draw do
     end
     get :upvote, :downvote
   end
-  resources :tags, only: :show, param: :tag
+  resources :tags, only: :show, param: :tag do
+    member do
+      get :subscribe, :unsubscribe
+    end
+  end
 
   devise_for :users, controllers: {
     omniauth_callbacks: 'omniauth_callbacks',
