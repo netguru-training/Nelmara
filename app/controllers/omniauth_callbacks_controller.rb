@@ -28,15 +28,16 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   
   def google_oauth2
-      # You need to implement the method below in your model (e.g. app/models/user.rb)
-      @user = User.from_omniauth(request.env["omniauth.auth"])
+      data = request.env["omniauth.auth"].info
+      user = User.where(:email => data["email"]).first
 
-      if @user.persisted?
-        flash[:notice] = I18n.t "devise.omniauth_callbacks.success", :kind => "Google"
-        sign_in_and_redirect @user, :event => :authentication
-      else
-        session["devise.google_data"] = request.env["omniauth.auth"]
-        redirect_to new_user_registration_url
+      unless user
+        session[:user] = User.new(username: data["name"],
+           email: data["email"],
+           password: Devise.friendly_token[0,20],
+           remote_avatar_url: data["image"]
+        )
+        render 'users/finish_google_auth'
       end
   end
 end
