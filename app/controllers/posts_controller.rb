@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
   before_action :authenticate_user!, except: [:index, :all, :show]
   before_action :set_posts, only: [:index, :all]
-  expose(:posts)
+  expose(:posts) { Post.includes(:user, :comments) }
   expose(:post, attributes: :post_params)
   expose(:tags) { ActsAsTaggableOn::Tag.all.order(taggings_count: :desc) }
   expose(:comment) { Comment.new }
@@ -79,7 +79,7 @@ class PostsController < ApplicationController
     def set_posts
       self.posts = posts.search_by_title(query_param) if query_param.present?
       self.posts = posts.tagged_with(current_user.tags, any: true) if user_signed_in? && index_action?
-      self.posts = posts.includes(:user, :comments).paginate(page: params[:page])
+      self.posts = posts.paginate(page: params[:page])
     end
 
 end
