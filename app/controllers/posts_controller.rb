@@ -74,9 +74,9 @@ class PostsController < ApplicationController
     end
 
     def set_posts
-      self.posts = self.posts.search_by_title(query_param) if query_param.present?
-      self.posts = self.posts.tagged_with(current_user.tags) if user_signed_in? && index_action?
-      self.posts = self.posts.includes(:user, :comments).paginate(page: params[:page])
+      self.posts = posts.search_by_title(query_param) if query_param.present?
+      self.posts = posts.tagged_with(current_user.tags, any: true) if user_signed_in? && index_action?
+      self.posts = posts.includes(:user, :comments).paginate(page: params[:page])
     end
 
 end
