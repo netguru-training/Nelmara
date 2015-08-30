@@ -30,11 +30,11 @@ gem 'omniauth-facebook'
 gem 'figaro'
 gem 'mini_magick'
 gem 'social-share-button'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug'
   gem 'factory_girl_rails'
-  gem 'faker'
   gem 'pry'
   gem 'spring'
   gem 'rspec-rails'
