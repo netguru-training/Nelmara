@@ -79,6 +79,11 @@ class PostsController < ApplicationController
     def set_posts
       self.posts = posts.search_by_title(query_param) if query_param.present?
       self.posts = posts.tagged_with(current_user.tags, any: true) if user_signed_in? && index_action?
+      if params[:best] then
+        self.posts = posts.by_best
+      else 
+        self.posts = posts.by_new
+      end
       self.posts = posts.paginate(page: params[:page])
     end
 

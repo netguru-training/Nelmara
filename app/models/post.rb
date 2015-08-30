@@ -7,7 +7,8 @@ class Post < ActiveRecord::Base
                                                       tsearch: {dictionary: "english"}
                                                     }
 
-  default_scope { order(created_at: :desc) }
+  scope :by_new, -> { order(created_at: :desc) }
+  scope :by_best, -> { order(cached_votes_score: :desc) }
 
   acts_as_votable
   acts_as_taggable
@@ -27,4 +28,3 @@ class Post < ActiveRecord::Base
   DEFAULTS = ["earth", "sports", "programming"]
 
 end
-

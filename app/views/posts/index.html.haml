@@ -3,6 +3,10 @@
 = link_to "Submit new post", new_post_path, class: "btn btn-primary btn-submit"
 = render 'search'
 
+%p Sort by
+= link_to "best", "#{request.path}?best=true", class: "sort-button"
+= link_to "new", request.path, class: "sort-button"
+
 .posts
   - self.posts.each do |post|
     = render post
