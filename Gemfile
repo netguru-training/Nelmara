@@ -34,6 +34,7 @@ gem 'figaro'
 gem 'mini_magick'
 gem 'social-share-button'
 gem 'faker'
+gem 'gemsurance'
 
 group :development, :test do
   gem 'byebug'
