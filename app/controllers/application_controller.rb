@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  include Pundit
   before_action :configure_permitted_parameters, if: :devise_controller?
   # Prevent CSRF attacks by raising an exception.
   # For APIs, you may want to use :null_session instead.
@@ -6,6 +7,7 @@ class ApplicationController < ActionController::Base
   decent_configuration do
     strategy DecentExposure::StrongParametersStrategy
   end
+
 
   def ensure_signup_complete
     # Ensure we don't go into an infinite loop

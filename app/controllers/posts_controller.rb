@@ -20,7 +20,12 @@ class PostsController < ApplicationController
     redirect_to root_path
   end
 
+  def edit
+    authorize post, :update?
+  end
+
   def update
+    authorize post
     if post.save
       redirect_to post_path(post)
     else
@@ -29,6 +34,7 @@ class PostsController < ApplicationController
   end
 
   def upvote
+    authorize post, :vote?
     if post.user != current_user
       post.liked_by current_user
     end
@@ -39,6 +45,7 @@ class PostsController < ApplicationController
   end
 
   def downvote
+    authorize post, :vote?
     if post.user != current_user
       post.disliked_by current_user
     end
