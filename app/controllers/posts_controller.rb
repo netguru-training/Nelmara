@@ -11,8 +11,6 @@ class PostsController < ApplicationController
     query_param = params[:query]
     if query_param && query_param != ""
       self.posts = posts.search_by_title(query_param).order(created_at: :desc)
-    else
-      self.posts = posts.all
     end
     self.posts = posts.paginate(page: params[:page])
     respond_to do |format|
@@ -22,6 +20,11 @@ class PostsController < ApplicationController
   end
 
   def all
+    self.posts = Post.all
+    query_param = params[:query]
+    if query_param && query_param != ""
+      self.posts = posts.search_by_title(query_param).order(created_at: :desc)
+    end
     self.posts = posts.paginate(page: params[:page])
     render 'index'
   end
