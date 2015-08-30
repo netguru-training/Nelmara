@@ -18,6 +18,8 @@ class Post < ActiveRecord::Base
   validates :title, presence: true
   validates :body, presence: true, length: 2..300
 
+  self.per_page = 10
+
   def self.search_by_title(query)
     kinda_matching(query)
   end

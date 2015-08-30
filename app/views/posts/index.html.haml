@@ -2,7 +2,7 @@
 
 = render 'search'
 
-- @posts.each do |post|
+- posts.each do |post|
   = render post
   %p
     Add a comment
@@ -12,3 +12,4 @@
         - post.comments.each do |comment|
           = render comment
 
+= will_paginate posts

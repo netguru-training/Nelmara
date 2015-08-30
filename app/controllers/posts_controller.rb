@@ -7,10 +7,11 @@ class PostsController < ApplicationController
   def index
     query_param = params[:query]
     if query_param && query_param != ""
-      @posts = Post.search_by_title(query_param).order(created_at: :desc)
+      self.posts = Post.search_by_title(query_param).order(created_at: :desc)
     else
-      @posts = Post.all
+      self.posts = Post.all
     end
+    self.posts = posts.paginate(page: params[:page])
   end
 
   def create
