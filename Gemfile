@@ -5,6 +5,7 @@ ruby '2.2.0'
 gem 'acts_as_votable', '~> 0.10.0'
 gem 'acts-as-taggable-on', '~> 3.4'
 gem 'bootstrap-sass'
+gem 'bootstrap-will_paginate', '~> 0.0.10'
 gem 'carrierwave', '~> 0.10.0'
 gem 'coffee-rails', '~> 4.1.0'
 gem 'decent_exposure'
@@ -22,11 +23,13 @@ gem 'rails', '4.2.1'
 gem 'sass-rails', '~> 5.0'
 gem 'simple_form'
 gem 'uglifier', '>= 1.3.0'
+gem 'will_paginate', '~> 3.0.5'
 
 gem 'sdoc', '~> 0.4.0', group: :doc
 
 gem 'omniauth'
 gem 'omniauth-facebook'
+gem "omniauth-google-oauth2"
 gem 'figaro'
 gem 'mini_magick'
 gem 'social-share-button'
