@@ -14,9 +14,8 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'you@example.com'
   TEMP_EMAIL_REGEX = /\Ayou@example.com/
 
-  validates :username, presence: true
-  validates :email, format: { without: TEMP_EMAIL_REGEX, on: :update }
-
+  validates :username, presence: true, uniqueness: true
+  validates :email, format: {:without => TEMP_EMAIL_REGEX}, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
