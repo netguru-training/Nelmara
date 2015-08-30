@@ -1,12 +1,18 @@
 language: ruby
 rvm:
-  - 2.2.0
+- 2.2.0
 before_script:
-  - cp config/database.yml.sample config/database.yml
-  - cp config/application.yml.sample config/application.yml
-  - bundle exec rake db:create db:schema:load
+- cp config/database.yml.sample config/database.yml
+- cp config/application.yml.sample config/application.yml
+- bundle exec rake db:create db:schema:load
 addons:
   postgresql: '9.3'
-
 script: bundle exec rspec
-
+deploy:
+  provider: heroku
+  api_key:
+    secure: BXMWoZQK7L+dnDPgAm2pYSK8nkgrimYjMvE6rYDhwMd0Ixlg0mA5ZiSQZPAGmIbvOnPiOd4huvRSzdMr1pYKzJvZYvGzh3K3OBMVMIUJmMmHd27sIvG+2IIxNWjnqX5jDdth74tq1Y3NA4RudoYYI+Jwwc22xztlJXUwmDwUux8LivUUxNDtILvIDE5LLPzyZP4S9hyvGe6n+dHNZGGYikv4wDMFtzjYS3Lqrj6CvwPY/TMIMbbkG3ltnlslyNBX/058Eitd/GZ6pymnH/wk2fRvMCALumafCphwKLBoWSKrisfNYw+ddbIIVTNKcq/5/OGEUOnIVknoUCilZdzyo1caFm5UU9sEytj0CmC0xfrQyMKctml+QbJ6TXArn7W0mbhuqoROKFf2XHWsy8fKre1TW28sMfA3EskCDaAl8Mk9Ho4Oi39EpZ8YXWVRtxejl01OI8XLJi3OuKDHhfrTS8qtMGOF+IsFYWp8BrDEjyiGkZm4HsvAOIXTNxm+GMMAIYWOhkjqSiOvHuORkRa2jcHXeYyAcwAZrD4SG12sXjEJg+7gfV9HbnRLeeEz3stEIuK8ry1tehS6D1U2M8wkeFD37c6ecSaadujucVaCY1YYz5Mtt6I+2xXcDBaiHetmnpLH5rejnsxvJlDSggJTE96vVh8MAiaLarO+rPMsOog=
+  app: nelmara
+  on:
+    repo: netguru-training/nelmara
+  run: "rake db:migrate"
