@@ -24,7 +24,7 @@ class Post < ActiveRecord::Base
     kinda_matching(query)
   end
 
-  DEFAULTS = ["earth, sports, programming"]
+  DEFAULTS = ["earth", "sports", "programming"]
 
 end
 
