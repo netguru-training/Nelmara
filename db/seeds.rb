@@ -7,7 +7,7 @@ User.create!(email: 'test@test.com',password: 'adminadmin', username: 'admin')
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    avatar: Faker::Avatar.image(slug = nil, size = '50x50')
+    remote_avatar_url: Faker::Avatar.image(slug = nil, size = '50x50')
     )
 end
 
@@ -39,14 +39,15 @@ end
     body: Faker::Hacker.say_something_smart,
     title: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
     user: user,
-    image: Faker::Avatar.image
+    image: Faker::Avatar.image,
+    tag_list: "blog"
   )
   rand(0..5).times do 
     user = users.sample
     rand(0..1) == 1 ? post.liked_by(user) : post.disliked_by(user)
   end
   rand(0..7).times do
-    comment = Comment.create!(
+    comment = post.comments.create!(
       body: Faker::Lorem.sentence,
       user: users.sample
         )
