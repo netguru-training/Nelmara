@@ -4,9 +4,14 @@
       .thumbnail
         = link_to post.image.url do
           = image_tag post.image.thumb.url
-    .upvote= link_to "+", post_upvote_path(post), remote: true, data: { type: :json }, class: "post-link"
+    .upvote
+      = link_to post_upvote_path(post), remote: true, data: { type: :json }, class: "post-link" do
+        %i.fa.fa-lg.fa-thumbs-up
+
     .vote-count= post.decorate.total_votes
-    .downvote= link_to "-", post_downvote_path(post), remote: true, data: { type: :json }, class: "post-link"
+    .downvote
+      = link_to post_downvote_path(post), remote: true, data: { type: :json }, class: "post-link" do
+        %i.fa.fa-lg.fa-thumbs-down
   %td.content
     .title
       = link_to post.title, post
