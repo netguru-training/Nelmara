@@ -17,7 +17,7 @@ users = User.all
   user = users.sample
   Post.create!(
     body: Faker::Hacker.say_something_smart,
-    title: Faker::Hacker.verb + Faker::Hacker.adjective + Faker::Hacker.noun,
+    title: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
     user: user,
     image: Faker::Avatar.image
     )
