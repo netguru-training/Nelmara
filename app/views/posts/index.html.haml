@@ -2,14 +2,9 @@
 
 = render 'search'
 
-- posts.each do |post|
-  = render post
-  %p
-    Add a comment
-    = render 'comments/form', post: post
-    %table
-      - if post.comments.any?
-        - post.comments.each do |comment|
-          = render comment
+.posts
+  - posts.each do |post|
+    = render post
 
-= will_paginate posts
+.infinite-scrolling.text-center
+  = will_paginate posts
