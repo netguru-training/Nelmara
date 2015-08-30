@@ -26,7 +26,7 @@
 %p
   =link_to "Add a comment", "#", class: "btn btn-default add-comment", data: { post_id: post.id }
   .comment-form{ id: "comment-form-#{post.id}" }= render 'comments/form', post: post
-  %table{ id: "comments-post-#{post.id}" }
+  %div{ id: "comments-post-#{post.id}" }
     - if post.comments.any?
       - post.comments.each do |comment|
         = render comment
