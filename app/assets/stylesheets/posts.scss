@@ -4,6 +4,7 @@
 
 $post-title-background: #F5F5F5;
 $border: 1px #eee solid;
+$red: #ED2F2F;
 
 .btn-submit {
   margin-bottom: 10px !important;
@@ -53,4 +54,38 @@ $border: 1px #eee solid;
 
 .comment-form {
   display: none;
+}
+
+.sort-by {
+  font-weight: bold;
+  margin-bottom: 5px;
+}
+
+.posts-buttons {
+  font-size: 0;
+  margin-bottom: 20px;
+
+  a, a:visited {
+    font-size: 14px;
+    font-weight: bold;
+    color: $red;
+    border: 2px solid $red;
+    padding: 2px 30px;
+    display: inline-block;
+
+    &:hover, &:focus {
+      background-color: $red;
+      color: white;
+      text-decoration: none;
+    }
+  }
+
+  .submit-btn {
+    float: right;
+  }
+}
+
+.row-user-tags, .row-all-tags {
+  padding: 10px;
+  border-bottom: $border;
 }

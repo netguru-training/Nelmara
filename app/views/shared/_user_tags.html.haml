@@ -1,7 +1,7 @@
 - if user_signed_in?
   .row-user-tags
     - if current_user.tags.any?
-      Your tags: 
+      %strong Your tags: 
       - current_user.tags.each do |tag|
         = link_to display_tag(tag), tag_path(tag)
     - else 
