@@ -3,7 +3,7 @@
     %td.vote= link_to "+", post_comment_upvote_path(comment.post, comment), remote: true, data: { type: :json }, class: "comment-link"
     %td.vote-count= comment.decorate.total_votes
     %td.vote= link_to "-", post_comment_downvote_path(comment.post, comment), remote: true, data: { type: :json }, class: "comment-link"
-    %td.avatar= image_tag comment.user.avatar.thumb
+    %td.avatar= image_tag comment.user.avatar.thumb if comment.user.avatar.present?
     %td.content
       .body
         %span.nickname= comment.user.username
