@@ -71,8 +71,10 @@ class User < ActiveRecord::Base
     unless user
         user = User.create(username: data["name"],
            email: data["email"],
-           password: Devise.friendly_token[0,20]
+           password: Devise.friendly_token[0,20],
+           remote_avatar_url: data["image"]
         )
+        render 'users/finish_google_auth'
     end
     user
   end

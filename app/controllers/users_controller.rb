@@ -29,7 +29,7 @@ class UsersController < Devise::RegistrationsController
   private
 
     def attach_avatar
-      @user.remote_avatar_url = Faker::Avatar.image
+      @user.remote_avatar_url ||= Faker::Avatar.image
       @user.save
     end
 
@@ -38,7 +38,7 @@ class UsersController < Devise::RegistrationsController
     end
 
     def user_params
-      accessible = [ :name, :email, :avatar ]
+      accessible = [ :name, :email, :avatar, :remote_avatar_url ]
       accessible << [ :password, :password_confirmation ] unless params[:user][:password].blank?
       params.require(:user).permit(accessible)
     end

@@ -1,0 +1,11 @@
+%h2 Add password to your account
+= simple_form_for(session[:user], url: user_registration_url) do |f|
+  = f.error_notification
+  .form-inputs
+    = f.hidden_field :email
+    = f.hidden_field :username
+    = f.hidden_field :remote_avatar_url
+    = f.input :password, required: true, autofocus: true, hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length)
+    = f.input :password_confirmation, required: true
+  .form-actions
+    = f.button :submit, "Sign up"
