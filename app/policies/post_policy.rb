@@ -3,7 +3,7 @@ class PostPolicy < ApplicationPolicy
     record.user == user
   end
 
-  def vote
+  def vote?
     record.user != user
   end
 end
