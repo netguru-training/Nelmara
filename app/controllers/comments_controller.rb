@@ -18,7 +18,10 @@ class CommentsController < ApplicationController
   def destroy
     comment.body = t('comment.destroy_msg', user: current_user.username)
     if comment.save
-      redirect_to post_url(post), notice: 'Comment was successfully destroyed.'
+      respond_to do |format|
+        format.html { redirect_to post_url(post), notice: 'Comment was successfully destroyed.' }
+        format.js 
+      end
     else
       redirect_to post_url(post)
     end
