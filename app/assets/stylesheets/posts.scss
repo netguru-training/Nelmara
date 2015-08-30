@@ -9,23 +9,24 @@ $border: 1px #eee solid;
   margin-bottom: 10px !important;
 }
 
-#search_controls {
+.search_controls {
   width: 100%;
   margin-bottom: 10px;
 
   .form-group {
+
     width: 100%;
+
+    .search_field {
+      width: 88%;
+    }
+
+    .search_submit {
+      width: 11%;
+    }
+
   }
-}
-
-#search_field {
-  width: 88%;
-}
-
-#search_submit {
-  width: 11%;
-}
-
+  }
 .post {
   border: $border;
   margin-bottom: 10px;
