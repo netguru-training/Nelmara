@@ -4,6 +4,7 @@
 
 $post-title-background: #F5F5F5;
 $light-grey: #eee;
+$grey: #aaa;
 $red: #ED2F2F;
 
 .btn-submit {
@@ -33,21 +34,29 @@ $red: #ED2F2F;
   width: 100%;
 
   .votes {
-    padding: 0 10px;
-    width: 30px;
+    padding: 10px;
+    width: 80px;
     border-right: 1px solid $light-grey;
   }
 
   .content {
+    vertical-align: top;
     .title {
       padding: 5px;
       border-bottom: 1px solid $light-grey;
       font-weight: bold;
       background-color: $post-title-background;
+      .social {
+        display: inline-block;
+        float: right;
+      }
     }
-
-    .body, .user {
+    .post-details {
       padding: 5px;
+      .posted-by {
+        font-size: 12px;
+        color: $grey;
+      }
     }
   }
 }

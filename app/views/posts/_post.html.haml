@@ -1,5 +1,5 @@
 %table.post{id: "post_#{post.id}"}
-  %td.votes
+  %td.votes.text-center
     - if post.image.present?
       .thumbnail
         = link_to post.image.url do
@@ -8,14 +8,16 @@
     .vote-count= post.decorate.total_votes
     .downvote= link_to "-", post_downvote_path(post), remote: true, data: { type: :json }, class: "post-link"
   %td.content
-    .title= link_to post.title, post
-    .body= post.body
-    .user= "Posted by #{post.user.username}"
-    .tags
-      - post.tag_list.each do |tag|
-        = link_to display_tag(tag), tag_path(tag)
-    .social= social_share_button_tag(post.title)
-    .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if policy(post).update?
+    .title
+      = link_to post.title, post
+      .social= social_share_button_tag(post.title)
+    .post-details
+      .body= post.body
+      .posted-by= "Posted by #{post.user.username} #{time_ago_in_words(post.created_at)} ago"
+      .tags
+        - post.tag_list.each do |tag|
+          = link_to display_tag(tag), tag_path(tag)
+      .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if policy(post).update?
 %p
   =link_to "Add a comment", "#", class: "btn btn-default add-comment", data: { post_id: post.id }
   .comment-form{ id: "comment-form-#{post.id}" }= render 'comments/form', post: post
