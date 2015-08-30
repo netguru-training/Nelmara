@@ -4,7 +4,7 @@
 = render 'search'
 
 .posts
-  - self.posts.includes(:user, :comments).each do |post|
+  - self.posts.each do |post|
     = render post
 
 .infinite-scrolling.text-center
