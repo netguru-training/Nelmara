@@ -1,4 +1,10 @@
-%h1= display_tag tagname
+%h1
+  = display_tag tagname
+  - if user_signed_in?
+    - if current_user.subscribed?(tagname)
+      = link_to "Unsubscribe", unsubscribe_tag_path(tagname), class: "btn btn-primary"
+    - else
+      = link_to "Subscribe", subscribe_tag_path(tagname), class: "btn btn-primary"
 
 - posts.each do |post|
   = render post

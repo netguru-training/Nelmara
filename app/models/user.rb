@@ -9,6 +9,7 @@ class User < ActiveRecord::Base
 
   has_many :posts
   has_many :comments
+  has_many :subscriptions
 
   TEMP_EMAIL_PREFIX = 'you@example.com'
   TEMP_EMAIL_REGEX = /\Ayou@example.com/
@@ -74,6 +75,22 @@ class User < ActiveRecord::Base
         )
     end
     user
+  end
+
+  def subscribe(tagname)
+    subscriptions.create(tagname: tagname)
+  end
+
+  def unsubscribe(tagname)
+    subscriptions.find_by(tagname: tagname).destroy
+  end
+
+  def subscribed?(tagname)
+    subscriptions.exists?(tagname: tagname)
+  end
+
+  def tags
+    subscriptions.map(&:tagname)
   end
 end
 
