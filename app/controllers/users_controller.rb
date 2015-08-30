@@ -1,13 +1,10 @@
 class UsersController < Devise::RegistrationsController
-  # before_action :set_user, only: [:update]
-  # after_action :attach_avatar, only: [:create]
 
   def create
     super
     attach_avatar if @user.persisted?
   end
 
-  # PATCH/PUT /users/:id.:format
   def update
     if @user.update(user_params)
       sign_in(@user == current_user ? @user : current_user, :bypass => true)
@@ -17,10 +14,8 @@ class UsersController < Devise::RegistrationsController
     end
   end
 
-  # GET/PATCH /users/:id/finish_signup
   def finish_signup
-    # authorize! :update, @user
-    if request.patch? && params[:user] #&& params[:user][:email]
+    if request.patch? && params[:user]
       if @user.update(user_params)
         @user.skip_reconfirmation!
         sign_in(@user, :bypass => true)
