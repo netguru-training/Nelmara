@@ -1,4 +1,4 @@
 .row-all-tags
   Most popular tags: 
   - tags.each do |tag|
-    = link_to "#{display_tag(tag)} (#{tag.taggings_count})", tag_path(tag)
+    = link_to "#{display_tag(tag)} (#{tag.taggings_count})", tag_path(tag.name)
