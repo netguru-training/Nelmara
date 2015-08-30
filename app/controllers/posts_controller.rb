@@ -20,8 +20,11 @@ class PostsController < ApplicationController
   def create
     post.user = current_user
     post.tag_list.add(post.tags.split(" "))
-    post.save
-    redirect_to root_path
+    if post.save
+      redirect_to post_path(post)
+    else
+      render :new
+    end
   end
 
   def edit
