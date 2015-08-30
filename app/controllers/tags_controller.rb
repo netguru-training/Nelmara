@@ -4,6 +4,14 @@ class TagsController < ApplicationController
   expose(:posts) { Post.tagged_with(tagname) }
   expose(:comment) { Comment.new }
 
+  def show
+    if params[:best] then
+      self.posts = posts.by_best
+    else 
+      self.posts = posts.by_new
+    end
+  end
+
   def subscribe 
     current_user.subscribe(tagname)
     redirect_to tag_path(tagname)

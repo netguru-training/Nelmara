@@ -6,5 +6,9 @@
     - else
       = link_to "Subscribe", subscribe_tag_path(tagname), class: "btn btn-primary"
 
+%p Sort by
+= link_to "best", "#{request.path}?best=true", class: "sort-button"
+= link_to "new", request.path, class: "sort-button"
+
 - posts.each do |post|
   = render post
