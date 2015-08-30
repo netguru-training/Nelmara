@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:google_oauth2, :facebook]
 
+  after_create :subscribe_to_defaults
+
   mount_uploader :avatar, AvatarUploader
 
   has_many :posts
@@ -76,6 +78,12 @@ class User < ActiveRecord::Base
         render 'users/finish_google_auth'
     end
     user
+  end
+
+  def subscribe_to_defaults
+    Post::DEFAULTS.each do |tagname|
+      subscribe(tagname)
+    end
   end
 
   def subscribe(tagname)
