@@ -35,17 +35,25 @@ end
 
 20.times do
   user = users.sample
-  Post.create!(
+  post = Post.create!(
     body: Faker::Hacker.say_something_smart,
     title: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
     user: user,
     image: Faker::Avatar.image
-    )
-rand(0..7).times do
-  Comment.create!(
-    body: Faker::Lorem.sentence,
-    user: users.sample
-      )
+  )
+  rand(0..5).times do 
+    user = users.sample
+    rand(0..1) == 1 ? post.liked_by(user) : post.disliked_by(user)
+  end
+  rand(0..7).times do
+    comment = Comment.create!(
+      body: Faker::Lorem.sentence,
+      user: users.sample
+        )
+    rand(0..5).times do 
+      user = users.sample
+      rand(0..1) == 1 ? comment.liked_by(user) : comment.disliked_by(user)
+    end
   end
 
 
