@@ -14,7 +14,6 @@ feature 'Visitor signs up' do
     fill_in 'Password', :with => user.password
     click_button 'Log in'
     expect(page).to have_content('Sign out')
-    expect(page).to have_content('Nelmara')
   end
 
   scenario 'with invalid email' do
