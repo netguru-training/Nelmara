@@ -7,7 +7,7 @@ User.create!(email: 'test@test.com',password: 'adminadmin', username: 'admin')
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
     password: Faker::Internet.password,
-    avatar: Faker::Avatar.image(slug=nil, size='50x50')
+    avatar: Faker::Avatar.image(slug = nil, size = '50x50')
     )
 end
 
