@@ -6,7 +6,10 @@ class CommentsController < ApplicationController
   def create
     comment.user = current_user
     if comment.save
-      redirect_to params[:comment][:redirect] || post, notice: 'Comment was successfully created.'
+      respond_to do |format|
+        format.html { redirect_to params[:comment][:redirect] || post, notice: 'Comment was successfully created.' }
+        format.js
+      end
     else
       render :new
     end
