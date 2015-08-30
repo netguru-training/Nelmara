@@ -21,6 +21,11 @@ class PostsController < ApplicationController
     end
   end
 
+  def all
+    self.posts = posts.paginate(page: params[:page])
+    render 'index'
+  end
+
   def create
     post.user = current_user
     post.tag_list.add(post.tags.split(" "))

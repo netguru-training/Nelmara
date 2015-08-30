@@ -1,0 +1,8 @@
+- if user_signed_in?
+  .row-tags
+    - if current_user.tags.any?
+      Your tags: 
+      - current_user.tags.each do |tag|
+        = link_to display_tag(tag), tag_path(tag)
+    - else 
+      You aren't subscribed to any tags

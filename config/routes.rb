@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#index'
 
+  get :all, to: "posts#all"
   resources :posts do
     resources :comments, only: [:create, :new, :destroy] do
       get :upvote, :downvote
