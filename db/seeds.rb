@@ -12,6 +12,26 @@ User.create!(email: 'test@test.com',password: 'adminadmin', username: 'admin')
 end
 
 users = User.all
+image_tags = [["earth", 7]]
+image_urls = {
+  earth: ["http://i.imgur.com/uaoMjk5.jpg", "http://i.imgur.com/EA0JNvT.jpg",
+    "http://i.imgur.com/dKknDjW.jpg", "http://i.imgur.com/Mzggt4v.jpg", "http://i.imgur.com/cJAkSwJ.jpg",
+    "http://i.imgur.com/Fk0mHMo.jpg", "http://i.imgur.com/NOM4GlN.jpg"]
+}
+
+
+image_tags.each do |tag|
+  tag[1].times do |n|
+    user = users.sample
+    Post.create!(
+      body: Faker::Hacker.say_something_smart,
+      title: "#{Faker::Hacker.verb} #{Faker::Hacker.adjective} #{Faker::Hacker.noun}",
+      user: user,
+      remote_image_url: image_urls[tag[0].to_sym][n],
+      tag_list: [tag[0], "image"].join(", ")
+      )
+  end
+end
 
 20.times do
   user = users.sample
