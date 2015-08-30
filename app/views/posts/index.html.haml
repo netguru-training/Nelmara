@@ -4,8 +4,8 @@
 
 %p.sort-by Sort by
 .posts-buttons
-  = link_to "best", "#{request.path}?best=true", class: "post-button"
-  = link_to "new", request.path, class: "post-button"
+  = link_to "new", request.path, class: "post-button #{active_sort("new")}"
+  = link_to "best", "#{request.path}?best=true", class: "post-button #{active_sort("best")}"
   = link_to "Submit new post", new_post_path, class: "post-button submit-btn"
 
 .posts
