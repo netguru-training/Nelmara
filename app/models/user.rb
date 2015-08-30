@@ -5,6 +5,8 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:google_oauth2, :facebook]
 
+  after_create :subscribe_to_defaults
+
   mount_uploader :avatar, AvatarUploader
 
   has_many :posts
@@ -14,9 +16,8 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'you@example.com'
   TEMP_EMAIL_REGEX = /\Ayou@example.com/
 
-  validates :username, presence: true
-  validates :email, format: { without: TEMP_EMAIL_REGEX, on: :update }
-
+  validates :username, presence: true, uniqueness: true
+  validates :email, format: {:without => TEMP_EMAIL_REGEX}, on: :update
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
 
@@ -77,6 +78,12 @@ class User < ActiveRecord::Base
         render 'users/finish_google_auth'
     end
     user
+  end
+
+  def subscribe_to_defaults
+    Post::DEFAULTS.each do |tagname|
+      subscribe(tagname)
+    end
   end
 
   def subscribe(tagname)

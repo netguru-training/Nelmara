@@ -12,7 +12,6 @@ feature 'Visitor visits the root path' do
   end
 
   scenario 'sees the latest posts' do
-    print page.html
     expect(page).to have_content post.title
   end
 
