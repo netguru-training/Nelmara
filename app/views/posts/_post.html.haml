@@ -17,8 +17,8 @@
     .social= social_share_button_tag(post.title)
     .actions= link_to "Edit", edit_post_path(post), class: 'btn btn-sm btn-default' if policy(post).update?
 %p
-  Add a comment
-  = render 'comments/form', post: post
+  =link_to "Add a comment", "#", class: "btn btn-default add-comment", data: { post_id: post.id }
+  .comment-form{ id: "comment-form-#{post.id}" }= render 'comments/form', post: post
   %table
     - if post.comments.any?
       - post.comments.each do |comment|
