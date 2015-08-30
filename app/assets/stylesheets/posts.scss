@@ -3,7 +3,7 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 $post-title-background: #F5F5F5;
-$border: 1px #eee solid;
+$light-grey: #eee;
 $red: #ED2F2F;
 
 .btn-submit {
@@ -28,20 +28,20 @@ $red: #ED2F2F;
 }
 
 .post {
-  border: $border;
+  border: 1px solid $light-grey;
   margin-bottom: 10px;
   width: 100%;
 
   .votes {
     padding: 0 10px;
     width: 30px;
-    border-right: $border;
+    border-right: 1px solid $light-grey;
   }
 
   .content {
     .title {
       padding: 5px;
-      border-bottom: $border;
+      border-bottom: 1px solid $light-grey;
       font-weight: bold;
       background-color: $post-title-background;
     }
@@ -87,5 +87,5 @@ $red: #ED2F2F;
 
 .row-user-tags, .row-all-tags {
   padding: 10px;
-  border-bottom: $border;
+  border-bottom: 1px solid $light-grey;
 }
