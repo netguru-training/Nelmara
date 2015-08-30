@@ -2,7 +2,7 @@ class User < ActiveRecord::Base
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :trackable, :validatable, :omniauthable, 
+         :recoverable, :rememberable, :trackable, :validatable, :omniauthable,
          omniauth_providers: [:google_oauth2, :facebook]
 
   mount_uploader :avatar, AvatarUploader
@@ -14,8 +14,8 @@ class User < ActiveRecord::Base
   TEMP_EMAIL_PREFIX = 'you@example.com'
   TEMP_EMAIL_REGEX = /\Ayou@example.com/
 
-  validates_presence_of :username
-  validates_format_of :email, :without => TEMP_EMAIL_REGEX, on: :update
+  validates :username, presence: true
+  validates :email, format: { without: TEMP_EMAIL_REGEX, on: :update }
 
 
   def self.find_for_oauth(auth, signed_in_resource = nil)
