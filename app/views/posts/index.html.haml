@@ -3,8 +3,9 @@
 = render 'search'
 
 .posts
-  - posts.each do |post|
+  - posts.includes(:user, :comments).each do |post|
     = render post
 
 .infinite-scrolling.text-center
   = will_paginate posts
+
