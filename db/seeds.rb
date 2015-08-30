@@ -1,6 +1,6 @@
 puts "Seeds: start"
 
-User.create!(email: 'admin@admin.com',password: 'adminadmin', username: 'admin')
+User.create!(email: 'test@test.com',password: 'adminadmin', username: 'admin')
 
 5.times do
   User.create!(
@@ -16,11 +16,11 @@ users = User.all
   user = users.sample
   Post.create!(
     body: Faker::Hacker.say_something_smart,
-    title: Faker::Hacker.verb + Faker::Hacker.adjective + Faker::Haker.noun,
+    title: Faker::Hacker.verb + Faker::Hacker.adjective + Faker::Hacker.noun,
     user: user,
     image: Faker::Avatar.image
     )
-(0..7).times do
+rand(0..7).times do
   Comment.create!(
     body: Faker::Lorem.sentence,
     user: users.sample
