@@ -6,7 +6,8 @@ User.create!(email: 'test@test.com',password: 'adminadmin', username: 'admin')
   User.create!(
     username: Faker::Internet.user_name,
     email: Faker::Internet.email,
-    password: Faker::Internet.password
+    password: Faker::Internet.password,
+    avatar: Faker::Avatar.image(slug=nil, size='50x50')
     )
 end
 
@@ -31,3 +32,4 @@ rand(0..7).times do
 end
 
 puts "Seeds: done"
+
