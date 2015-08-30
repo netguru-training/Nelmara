@@ -1,19 +1,12 @@
 class PostsController < ApplicationController
-  before_action :authenticate_user!, except: [:index, :show]
+  before_action :authenticate_user!, except: [:index, :all, :show]
+  before_action :set_posts, only: [:index, :all]
   expose(:posts)
   expose(:post, attributes: :post_params)
   expose(:tags) { ActsAsTaggableOn::Tag.all.order(taggings_count: :desc) }
   expose(:comment) { Comment.new }
 
   def index
-    if user_signed_in?
-      self.posts = Post.tagged_with(current_user.tags)
-    end
-    query_param = params[:query]
-    if query_param && query_param != ""
-      self.posts = posts.search_by_title(query_param).order(created_at: :desc)
-    end
-    self.posts = posts.paginate(page: params[:page])
     respond_to do |format|
       format.html
       format.js
@@ -21,12 +14,6 @@ class PostsController < ApplicationController
   end
 
   def all
-    self.posts = Post.all
-    query_param = params[:query]
-    if query_param && query_param != ""
-      self.posts = posts.search_by_title(query_param).order(created_at: :desc)
-    end
-    self.posts = posts.paginate(page: params[:page])
     render 'index'
   end
 
@@ -74,8 +61,22 @@ class PostsController < ApplicationController
 
   private
 
+    def index_action?
+      params[:action] == 'index'
+    end
+
     def post_params
       params.require(:post).permit(:title, :body, :url, :tags, :image)
+    end
+
+    def query_param
+      params[:query]
+    end
+
+    def set_posts
+      self.posts = self.posts.search_by_title(query_param) if query_param.present?
+      self.posts = self.posts.tagged_with(current_user.tags) if user_signed_in? && index_action?
+      self.posts = self.posts.paginate(page: params[:page])
     end
 
 end
